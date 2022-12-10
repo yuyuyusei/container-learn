@@ -1,0 +1,150 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+#header {
+    box-sizing: border-box;
+    background: #ccc;
+    height: 50px;
+}
+#main {
+    box-sizing: border-box;
+    margin-left: 220px;
+    padding: 20px 40px;
+}
+#sidebar {
+    box-sizing: border-box;
+    top: 50px;
+    font-size: 15px;
+    width: 220px;
+    height: 100%;
+    position: fixed;
+    overflow: auto;
+    color: #033560;
+    background: #fff;
+    text-align: center;
+    padding: 20px;
+}
+#global-nav .sub-menu > a:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 18px;
+    margin: auto;
+    vertical-align: middle;
+    width: 8px;
+    height: 8px;
+    border-top: 1px solid #033560;
+    border-right: 1px solid #033560;
+    transition: all .2s ease-out;
+    transform: rotate(135deg);
+}
+#global-nav .sub-menu.is-active > a:after {
+    transform: rotate(-45deg);
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+#header {
+    box-sizing: border-box;
+    background: #ccc;
+    height: 50px;
+}
+#main {
+    box-sizing: border-box;
+    margin-left: 220px;
+    padding: 20px 40px;
+}
+
+/* メニューここから */
+#sidebar {
+	font-size: 18px;
+	width: 260px;
+	height: 100%;
+	position: fixed;
+	color: #fff;
+	background: #111;
+	text-align: center;
+}
+#global-nav {
+	text-align: center;
+	height: 100%;
+	display: -ms-flex;
+	display: -webkit-flex;
+	display: flex;
+	-ms-flex-align: center;
+	-webkit-align-items: center;
+	align-items: center;
+}
+#global-nav ul {
+	width: 100%;
+	list-style: none;
+	margin-left: 0;
+}
+#global-nav > ul > li {
+	position: relative;
+	overflow: hidden;
+	display: block;
+}
+#global-nav a {
+	color: #bbb;
+	text-decoration: none;
+	display: block;
+	padding: 15px 0;
+	position: relative;
+	-moz-transition: background-color .3s linear;
+	-webkit-transition: background-color .3s linear;
+	transition: background-color .3s linear;
+}
+#global-nav a:hover {
+	color: #fff;
+}
+#global-nav .sub-menu > a {
+	position: relative;
+}
+#global-nav .sub-menu.is-active > a {
+	color: #fff;
+}
+
+/* sub-menu icon */
+#global-nav .sub-menu  > a:after {
+	content: "";
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	right: 23px;
+	margin: auto;
+	vertical-align: middle;
+	width: 8px;
+	height: 8px;
+	border-top: 1px solid #999;
+	border-right: 1px solid #999;
+	-moz-transition: all .2s ease-out;
+	-webkit-transition: all .2s ease-out;
+	transition: all .2s ease-out;
+	-moz-transform: rotate(135deg);
+	-webkit-transform: rotate(135deg);
+	transform: rotate(135deg);
+}
+#global-nav .sub-menu.is-active > a:after {
+	border-color: #fff;
+	-moz-transform: rotate(-45deg);
+	-webkit-transform: rotate(-45deg);
+	transform: rotate(-45deg);
+}
+
+/* sub-menu */
+#global-nav .sub-menu-nav {
+	font-size: 14px;
+	display: none;
+}
+#global-nav .sub-menu-nav a {
+	padding: 6px 0;
+	color: #777;
+}
+#global-nav .sub-menu-nav a:hover {
+	color: #ddd;
+}

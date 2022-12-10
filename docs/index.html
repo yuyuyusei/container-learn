@@ -1,87 +1,64 @@
 <!DOCTYPE html>
 <html lang="ja">
-<head>
-    <meta charset="UTF-8"/>
-    <title>container</title>
-    <script src="//code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
-    <meta name="vieport" content="width=device-width,initial-scale=1">
-    <link rel="icon" href="./imgs/icon.png" type="image/png"/>
-    <link href='style.css' rel='stylesheet' type='text/css'>
-    <script>
-        $(function(){
-            console.log('loaded.');
-        });
-    </script>
-</head>
-<body>
-<aside id="sidebar">
-	<nav id="global-nav">
-		<ul>
-			<li><a href="#">Home</a></li>
-			<li class="sub-menu">
-				<a href="#">About</a>
-				<ul class="sub-menu-nav">
-					<li><a href="#">About 1</a></li>
-					<li><a href="#">About 2</a></li>
-					<li><a href="#">About 3</a></li>
-					<li><a href="#">About 4</a></li>
-				</ul>
-			</li>
-			<li class="sub-menu">
-				<a href="#">Products</a>
-				<ul class="sub-menu-nav">
-					<li><a href="#">Product 1</a></li>
-					<li><a href="#">Product 2</a></li>
-				</ul>
-			</li>
-			<li class="sub-menu">
-				<a href="#">Link</a>
-				<ul class="sub-menu-nav">
-					<li><a href="#">Link 1</a></li>
-					<li><a href="#">Link 2</a></li>
-					<li><a href="#">Link 3</a></li>
-				</ul>
-			</li>
-			<li><a href="#">Contact</a></li>
-		</ul>
-	</nav>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.0.0/velocity.min.js"></script>
-    <script type="text/javascript">
-    (function($) {
-        $(function () {
-            $('.sub-menu').on({
-                'mouseenter': function () {
-                    $(this)
-                        .addClass('is-active')
-                        .find('.sub-menu-nav').velocity('slideDown', {
-                        duration: 300
-                    });
-                },
-                'mouseleave': function () {
-                    $(this)
-                        .removeClass('is-active')
-                        .find('.sub-menu-nav').velocity('slideUp', {
-                        duration: 300
-                    });
-                }
-            });
+    <head>
+        <meta charset="UTF-8">
+        <title>コンテナ勉強会</title>
 
-        });
-    })(jQuery);
-    </script>
-</aside>
+        <!-- jQuery読み込み -->
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 
-<main id="main">
-	<div id="main-in">
-		<div id="main-visual">
-			<h2>Sub Navigation 02</h2>
-		</div>
+        <!-- 各回ごとのJavaScriptファイル読み込み -->
+        <script type="text/javascript" src="sidebar.js"></script>
 
-		<section class="inner">
+        <!-- 必要に応じてcssファイル読み込み -->
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+    <body>
+        <!-- ヘッダー -->
+        <div class="header">
+            <h1 id="page-title">コンテナ勉強会</h1>
+        </div>
 
-            
-        </section>
-	</div><!-- /#main-in -->
-</main>
-</body>
+        <!-- サイドメニュー領域 -->
+        <div class="side-menu">
+            <p>サイドメニュー</p>
+            <ul>
+                <li class="contents1"><a href="#">Home</a></li>
+                <li class="has-child-menu"><a href="./container/what_is_container.html">コンテナとは</a>
+                    <ul>
+                        <li class="contents3-1"><a href="./container/container_structure.html">コンテナの構成</a></li>
+                        <li class="contents3-2"><a href="./container/container_process.html">コンテナのプロセス</a></li>
+                        <li class="contents3-3"><a href="./container/container_process.html">コンテナのネットワーク</a></li>
+                    </ul>
+                </li>
+                <li class="has-child-menu"><a href="./docker/what_is_docker.html">Docker</a>
+                    <ul>
+                        <li class="contents3-1"><a href="./docker/docker_command.html">よく使うDockerコマンド</a></li>
+                        <li class="contents3-2"><a href="./docker/docker_files.html">イメージとインスタンス，Dockerfile</a></li>
+                        <li class="contents3-3"><a href="./docker/dockercompose.html">複数コンテナ管理（Docker Compose）</a></li>
+                    </ul>
+                </li>
+                <li class="contents3"><a href="#">おわりに</a></li>
+            </ul>
+            <div class="side-menu-button">サイドメニュー</div>
+        </div>
+
+        <!-- サイドメニュー表示時の他領域を隠す用 -->
+        <div class="hide-contents"></div>
+
+        <!-- メインコンテンツ -->
+        <div class="main-contents">
+            <div class="content">
+                <!-- スクロールできるよう改行を大量に入れる -->
+                <p>コンテンツ1</p>
+                <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                <p>あああ</p>
+                <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                <p>あああ</p>
+                <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                <p>あああ</p>
+            </div>
+        </div>
+    </body>
 </html>

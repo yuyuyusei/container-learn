@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8"/>
+        <title>container</title>
+        <script src="//code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+        <meta name="vieport" content="width=device-width,initial-scale=1">
+        <link rel="icon" href="./imgs/icon.png" type="image/png"/>
+        <script>
+            $(function(){
+                console.log('loaded.');
+            });
+        </script>
+        
+    </head>
+    <body>
+        <header id="header"></header>
+        <main id="main">
+            <h1>【初心者向け】 HTML、CSS、Javascriptの基本を理解しよう</h1>
+            <div id="wrapper">
+                <section>
+                    <h2>HTMLとは</h2>
+                    <p>本文</p>
+                    <section>
+                    <h3>HTMLのバージョン</h3>
+                    <p>本文</p>
+                    </section>
+                </section>
+                <section>
+                    <h2>CSSとは</h2>
+                    <p>本文</p>
+                    <section>
+                    <h3>CSSのバージョン</h3>
+                    <p>本文</p>
+                    </section>
+                </section>
+                <!-- /#wrapper --></div>
+                <footer>
+                <p>フッターはここに記述</p>
+                </footer>
+        </main>
+
+        <aside id="sidebar">
+            <h1 id="brand-logo">Logo</h1>
+            <nav id="global-nav">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li class="sub-menu">
+                        <a href="#">About</a>
+                        <ul class="sub-menu-nav">
+                            <li><a href="#">About 1</a></li>
+                            <li><a href="#">About 2</a></li>
+                            <li><a href="#">About 3</a></li>
+                        </ul>
+                    </li>
+                    <li class="sub-menu">
+                        <a href="#">Products</a>
+                        <ul class="sub-menu-nav">
+                            <li><a href="#">Product 1</a></li>
+                            <li><a href="#">Product 2</a></li>
+                            <li><a href="#">Product 3</a></li>
+                            <li><a href="#">Product 4</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">Link</a>
+                        <ul class="sub-menu-nav">
+                            <li><a href="#">Link 1</a></li>
+                            <li><a href="#">Link 2</a></li>
+                            <li><a href="#">Link 3</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+        </aside>
+    </body>
+</html>
+
+
+body {
+    margin: 0;
+    padding: 0;
+}
+#header {
+    box-sizing: border-box;
+    background: #ccc;
+    height: 50px;
+}
+#main {
+    box-sizing: border-box;
+    margin-left: 220px;
+    padding: 20px 40px;
+}
+#sidebar {
+    box-sizing: border-box;
+    top: 50px;
+    font-size: 15px;
+    width: 220px;
+    height: 100%;
+    position: fixed;
+    overflow: auto;
+    color: #033560;
+    background: #fff;
+    text-align: center;
+    padding: 20px;
+}
+#global-nav .sub-menu > a:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 18px;
+    margin: auto;
+    vertical-align: middle;
+    width: 8px;
+    height: 8px;
+    border-top: 1px solid #033560;
+    border-right: 1px solid #033560;
+    transition: all .2s ease-out;
+    transform: rotate(135deg);
+}
+#global-nav .sub-menu.is-active > a:after {
+    transform: rotate(-45deg);
+}

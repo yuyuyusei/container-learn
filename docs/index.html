@@ -1,20 +1,87 @@
 <!DOCTYPE html>
 <html lang="ja">
-    <head>
-        <meta charset="UTF-8"/>
-        <title>container</title>
-        <script src="//code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
-        <meta name="vieport" content="width=device-width,initial-scale=1">
-        <link rel="icon" href="./imgs/icon.png" type="image/png"/>
-        <script>
-            $(function(){
-                console.log('loaded.');
+<head>
+    <meta charset="UTF-8"/>
+    <title>container</title>
+    <script src="//code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <meta name="vieport" content="width=device-width,initial-scale=1">
+    <link rel="icon" href="./imgs/icon.png" type="image/png"/>
+    <link href='style.css' rel='stylesheet' type='text/css'>
+    <script>
+        $(function(){
+            console.log('loaded.');
+        });
+    </script>
+</head>
+<body>
+<aside id="sidebar">
+	<nav id="global-nav">
+		<ul>
+			<li><a href="#">Home</a></li>
+			<li class="sub-menu">
+				<a href="#">About</a>
+				<ul class="sub-menu-nav">
+					<li><a href="#">About 1</a></li>
+					<li><a href="#">About 2</a></li>
+					<li><a href="#">About 3</a></li>
+					<li><a href="#">About 4</a></li>
+				</ul>
+			</li>
+			<li class="sub-menu">
+				<a href="#">Products</a>
+				<ul class="sub-menu-nav">
+					<li><a href="#">Product 1</a></li>
+					<li><a href="#">Product 2</a></li>
+				</ul>
+			</li>
+			<li class="sub-menu">
+				<a href="#">Link</a>
+				<ul class="sub-menu-nav">
+					<li><a href="#">Link 1</a></li>
+					<li><a href="#">Link 2</a></li>
+					<li><a href="#">Link 3</a></li>
+				</ul>
+			</li>
+			<li><a href="#">Contact</a></li>
+		</ul>
+	</nav>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.0.0/velocity.min.js"></script>
+    <script type="text/javascript">
+    (function($) {
+        $(function () {
+            $('.sub-menu').on({
+                'mouseenter': function () {
+                    $(this)
+                        .addClass('is-active')
+                        .find('.sub-menu-nav').velocity('slideDown', {
+                        duration: 300
+                    });
+                },
+                'mouseleave': function () {
+                    $(this)
+                        .removeClass('is-active')
+                        .find('.sub-menu-nav').velocity('slideUp', {
+                        duration: 300
+                    });
+                }
             });
-        </script>
-    </head>
-    <body>
-        <h1> sample</h1>
-        <h2>test</h2>
-        <img src="./imgs/icon.png"/>
-    </body>
+
+        });
+    })(jQuery);
+    </script>
+</aside>
+
+<main id="main">
+	<div id="main-in">
+		<div id="main-visual">
+			<h2>Sub Navigation 02</h2>
+		</div>
+
+		<section class="inner">
+
+            
+        </section>
+	</div><!-- /#main-in -->
+</main>
+</body>
 </html>

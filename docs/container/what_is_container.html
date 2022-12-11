@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <title>コンテナとは - コンテナ勉強会</title>
+
+        <!-- jQuery読み込み -->
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+
+        <!-- 各回ごとのJavaScriptファイル読み込み -->
+        <script type="text/javascript" src="../sidebar.js"></script>
+
+        <!-- 必要に応じてcssファイル読み込み -->
+        <link rel="stylesheet" type="text/css" href="../style.css">
+    </head>
+    <body>
+        <!-- ヘッダー -->
+        <div class="header">
+            <h1 id="page-title">コンテナとは</h1>
+        </div>
+
+        <!-- サイドメニュー領域 -->
+        <div class="side-menu">
+            <p>サイドメニュー</p>
+            <ul>
+                <li class="contents1"><a href="../index.html">Home</a></li>
+                <li class="has-child-menu"><a href="./what_is_container.html">コンテナとは</a>
+                    <ul>
+                        <li class="contents3-1"><a href="./container_structure.html">コンテナの構成</a></li>
+                        <li class="contents3-2"><a href="./container_process.html">コンテナのプロセス</a></li>
+                        <li class="contents3-3"><a href="./container_process.html">コンテナのネットワーク</a></li>
+                    </ul>
+                </li>
+                <li class="has-child-menu"><a href="../docker/what_is_docker.html">Docker</a>
+                    <ul>
+                        <li class="contents3-1"><a href="../docker/docker_command.html">よく使うDockerコマンド</a></li>
+                        <li class="contents3-2"><a href="../docker/docker_files.html">イメージとインスタンス，Dockerfile</a></li>
+                        <li class="contents3-3"><a href="../docker/dockercompose.html">複数コンテナ管理（Docker Compose）</a></li>
+                    </ul>
+                </li>
+                <li class="contents3"><a href="../conclusion.html">おわりに</a></li>
+            </ul>
+            <div class="side-menu-button">サイドメニュー</div>
+        </div>
+
+        <!-- サイドメニュー表示時の他領域を隠す用 -->
+        <div class="hide-contents"></div>
+
+        <!-- メインコンテンツ -->
+        <div class="main-contents">
+            <div class="content">
+                <h2>仮想マシン（VM）</h2>
+                <p>仮想マシンとは，専用の仮想化ソフトウェアによって部物理マシン上に作成され，仮想コンピュータシステムとして機能する仮想環境である．VMを使うことで，複数の異なるOSを1台のコンピュータ上で同時に実行可能となる．これにより，計算機資源を柔軟に管理することが可能である．<br>
+                VMは，物理マシンと同様に独自のOS，ストレージ，ネットワーク等を備えており，同じホスト上で実行されている他のVMから完全に分離されている．</p>
+                <p>・仮想マシンの種類</p>
+                <dl>
+                    <dt>ホストOS型
+                    <dd>～ホストOS型の説明（数行）～
+                    <dt>ハイパーバイザー型
+                    <dd>～ハイパーバイザー型の説明（数行）～
+                </dl>
+                <p>！画像！</p>
+                <h2>コンテナ</h2>
+                <p>コンテナとは～</p>
+                <h3>コンテナとVMの違い</h3>
+            </div>
+        </div>
+    </body>
+</html>

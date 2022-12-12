@@ -55,14 +55,16 @@
                 </p>
                 <h2>Namespace</h2>
                 <p>Namespaceは，Linuxカーネルのリソースを各プロセスごとに分離するための機構である．この機能により，プロセスは他のプロセスと隔離されるため，互いに干渉せずに環境構築が可能となる．
-                <h4>Namespaceの種類</h4>
+                <h4>Namespaceの種類（一例）</h4>
                 <ul>
-                    <li>リンゴ
-                    <li>イチゴ
-                    <li>みかん
+                    <li>PID Namespace:　Process IDを分離する．これにより，ホストのOSのプロセスの状態と関係なく，コンテナ内のPIDは1からスタートする．
+                    <li>Network Namespace:　NICやルーティングテーブル，FWのポリシー設定などのネットワークに関する情報を分離する．
+                    <li>UTS Namespace:　ホスト名やNISドメイン名を分離する．NISは複数のコンピュータを一元管理するために用いられる仕組みで，NISドメインはその識別子．
+                    <li>User Namespace:　UID，GID，Capabilityを分離する．
+                    <li>IPC Namespace:　プロセス間通信 (Inter-Process Communication) の名前空間．これが共有されているとプロセス間での通信が行える．
                 </ul>
-                <h4>画像</h4>
-                Namespace AとBがあり，その中では独立したファイル構造やプロセス空間を持つことができる．プロセス空間については，ホストOS上で動作しているPIDとコンテナ上で動作しているPIDをマッピングしているテーブルがあり，ホストOS上ではPIDが2だが，コンテナ上ではPIDが1である，ということになる．</p><br>
+                <img src="../imgs/container4.PNG" width="80%" style="display: block; margin: auto;"><br>
+                Namespace AとBがあり，その中では独立したファイル構造やプロセス空間を持つことができる．Namespaceが異なれば，同じファイル名やディレクトリが1つのOS上に作れる．プロセス空間については，ホストOS上で動作しているPIDとコンテナ上で動作しているPIDをマッピングしているテーブルがあり，ホストOS上ではPIDが2だが，コンテナ上ではPIDが1である，ということになる．</p><br>
 
                 <h2>cgroup</h2>
                 <p>cgroupは，プロセスをグループ化し，Linuxカーネルのリソースの使用を制限する役割を担う．上記のNamespaceはホスト名やPIDなどのリソースを制御するのに対し，cgroupはCPUやメモリといった物理的なリソースを制御する．cgroupを使うことで，特定のプロセスがホストOSの持つ有限なリソースを使い尽くして，ホストOSや他のプロセスに影響を与えないようにコントロールすることができる．</p><br>

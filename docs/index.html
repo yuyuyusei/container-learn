@@ -13,6 +13,8 @@
 
         <!-- 必要に応じてcssファイル読み込み -->
         <link rel="stylesheet" type="text/css" href="style.css">
+
+        <link rel="icon" href="./imgs/icon.png" type="image/png"/>
     </head>
     <body>
         <!-- ヘッダー -->
@@ -29,14 +31,14 @@
                     <ul>
                         <li class="contents3-1"><a href="./container/container_structure.html">コンテナの構成</a></li>
                         <li class="contents3-2"><a href="./container/container_process.html">コンテナのプロセス</a></li>
-                        <li class="contents3-3"><a href="./container/container_process.html">コンテナのネットワーク</a></li>
                     </ul>
                 </li>
                 <li class="has-child-menu"><a href="./docker/what_is_docker.html">Docker</a>
                     <ul>
                         <li class="contents3-1"><a href="./docker/docker_command.html">よく使うDockerコマンド</a></li>
                         <li class="contents3-2"><a href="./docker/docker_files.html">イメージとインスタンス，Dockerfile</a></li>
-                        <li class="contents3-3"><a href="./docker/dockercompose.html">複数コンテナ管理（Docker Compose）</a></li>
+                        <li class="contents3-3"><a href="./docker/docker_network.html">Dockerのネットワーク</a></li>
+                        <li class="contents3-4"><a href="./docker/dockercompose.html">複数コンテナ管理（Docker Compose）</a></li>
                     </ul>
                 </li>
                 <li class="contents3"><a href="./conclusion.html">おわりに</a></li>
@@ -50,8 +52,32 @@
         <!-- メインコンテンツ -->
         <div class="main-contents">
             <div class="content">
-                <!-- スクロールできるよう改行を大量に入れる -->
-                <h2>README</h2>
+                <h2>コンテナ勉強会</h2>
+                研究室で行ったコンテナ勉強会の資料です．この資料は <a href="https://github.com/yuyuyusei/container-learn">GitHub</a> で公開しています．
+
+                <h3>目的</h3>
+                <ul>
+                    <li>vmとコンテナの違いを説明できる
+                    <li>dockerを用いてコンテナを構築
+                    <li>亀井研の研究を理解するためのコンテナの基礎知識を身につける
+                </ul>
+                <h3>概要</h3>
+                <ol>
+                    <li>コンテナ
+                    <ol type=I>
+                        <li>コンテナとは
+                        <li>コンテナの構成
+                        <li>コンテナのプロセス
+                    </ol>
+                    <li>Docker
+                    <ol type=I>
+                        <li>Dockerとは
+                        <li>Dockerの主要コマンド
+                        <li>イメージとインスタンス，Dockerfile
+                        <li>Dockerのネットワーク
+                        <li>複数コンテナ管理（Docker Compose）
+                    </ol>
+                </ol>
             </div>
         </div>
     </body>

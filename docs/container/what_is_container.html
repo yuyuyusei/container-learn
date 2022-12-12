@@ -29,14 +29,14 @@
                     <ul>
                         <li class="contents3-1"><a href="./container_structure.html">コンテナの構成</a></li>
                         <li class="contents3-2"><a href="./container_process.html">コンテナのプロセス</a></li>
-                        <li class="contents3-3"><a href="./container_process.html">コンテナのネットワーク</a></li>
                     </ul>
                 </li>
                 <li class="has-child-menu"><a href="../docker/what_is_docker.html">Docker</a>
                     <ul>
                         <li class="contents3-1"><a href="../docker/docker_command.html">よく使うDockerコマンド</a></li>
                         <li class="contents3-2"><a href="../docker/docker_files.html">イメージとインスタンス，Dockerfile</a></li>
-                        <li class="contents3-3"><a href="../docker/dockercompose.html">複数コンテナ管理（Docker Compose）</a></li>
+                        <li class="contents3-3"><a href="../docker/docker_network.html">Dockerのネットワーク</a></li>
+                        <li class="contents3-4"><a href="../docker/dockercompose.html">複数コンテナ管理（Docker Compose）</a></li>
                     </ul>
                 </li>
                 <li class="contents3"><a href="../conclusion.html">おわりに</a></li>
@@ -51,7 +51,7 @@
         <div class="main-contents">
             <div class="content">
                 <h2>仮想マシン（VM）</h2>
-                <p>仮想マシンとは，専用の仮想化ソフトウェアによって部物理マシン上に作成され，仮想コンピュータシステムとして機能する仮想環境である．VMを使うことで，複数の異なるOSを1台のコンピュータ上で同時に実行可能となる．これにより，計算機資源を柔軟に管理することが可能である．<br>
+                <p>仮想マシンとは，専用の仮想化ソフトウェアによって物理マシン上に作成され，仮想コンピュータシステムとして機能する仮想環境のこと．VMを使うことで，複数の異なるOSを1台のコンピュータ上で同時に実行可能となる．これにより，計算機リソースを柔軟に管理することが可能である．<br>
                 VMは，物理マシンと同様に独自のOS，ストレージ，ネットワーク等を備えており，同じホスト上で実行されている他のVMから完全に分離されている．</p>
                 <p>・仮想マシンの種類</p>
                 <dl>
@@ -61,9 +61,22 @@
                     <dd>～ハイパーバイザー型の説明（数行）～
                 </dl>
                 <p>！画像！</p>
-                <h2>コンテナ</h2>
-                <p>コンテナとは～</p>
-                <h3>コンテナとVMの違い</h3>
+                
+                <br><h2>コンテナ型仮想化</h2>
+                <p>コンテナ型仮想化技術とは，コンテナエンジンと呼ばれるプロセスを通して，ホストOSのカーネルを共有することで計算機リソースを隔離し、仮想的な空間を作り出す技術のこと．VMがハードウェア全体を論理的に実行するのに対し、コンテナはOSは共通のカーネルを利用し、アプリケーションの実行環境だけを別々のものとして分離する．</p>
+                <p><b>注意：</b>カーネル上で動作しているコンテナは単一のカーネルを共有しているため、ホストOSと異なるOSのコンテナを作成することはできない．（Linuxの場合Linux, Windowsの場合はWindowsのコンテナを作成できる．）</p>
+
+                <br><h3>コンテナとVMの違い</h3>
+                ！！画像
+
+                <p style="padding: 8px; border-left: 2px solid blue;"><b>〇実行環境</b></p>
+                VMとコンテナの違いの一つは，上記にあるように「OSカーネルを複数実行可能かどうか」である．VMでは，各VM毎に別々のOSカーネルを実行できる．一方で，コンテナは単一のOSカーネルしか実行することができず，単一のOSカーネル上で複数のコンテナが動作することになる．また，VMはカーネル空間とユーザー空間の両方を分離しているのに対し，コンテナはユーザー空間のみを分離している．（※）<br>
+                ※カーネル空間：カーネル領域，ユーザー空間：アプリケーションが動作している領域
+
+                <p style="padding: 8px; border-left: 2px solid blue;"><b>〇起動速度</b></p>
+                もう一つの違いは，「起動速度」である，VMの場合，OSカーネルの起動からシステムに必要なプロセスの実行，アプリケーションの実行のように，システムの起動が完了するまでに様々な処理が必要である．一方で，コンテナの場合，OSカーネルとシステムプロセスの起動は完了しているため，アプリケーションプロセスの実行処理だけで済む．この特徴を活かし，システム開発からテスト，本番環境へのデプロイまでを高速に行うことができるため，コンテナはDevOpsと相性が良いとされている．
+                
+                <br><br><br><br><br><br>
             </div>
         </div>
     </body>

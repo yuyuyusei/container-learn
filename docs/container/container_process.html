@@ -29,14 +29,14 @@
                     <ul>
                         <li class="contents3-1"><a href="./container_structure.html">コンテナの構成</a></li>
                         <li class="contents3-2"><a href="./container_process.html">コンテナのプロセス</a></li>
-                        <li class="contents3-3"><a href="./container_process.html">コンテナのネットワーク</a></li>
                     </ul>
                 </li>
                 <li class="has-child-menu"><a href="../docker/what_is_docker.html">Docker</a>
                     <ul>
                         <li class="contents3-1"><a href="../docker/docker_command.html">よく使うDockerコマンド</a></li>
                         <li class="contents3-2"><a href="../docker/docker_files.html">イメージとインスタンス，Dockerfile</a></li>
-                        <li class="contents3-3"><a href="../docker/dockercompose.html">複数コンテナ管理（Docker Compose）</a></li>
+                        <li class="contents3-3"><a href="../docker/docker_network.html">Dockerのネットワーク</a></li>
+                        <li class="contents3-4"><a href="../docker/dockercompose.html">複数コンテナ管理（Docker Compose）</a></li>
                     </ul>
                 </li>
                 <li class="contents3"><a href="../conclusion.html">おわりに</a></li>
@@ -50,14 +50,27 @@
         <!-- メインコンテンツ -->
         <div class="main-contents">
             <div class="content">
-                <h2>コンテナのプロセス</h2>
-                <p>コンテナのプロセスの説明</p>
-                <h3>Namespace</h3>
-                <p>～説明～</p>
-                <h3>cgroup</h3>
-                <p>～説明～</p>
-                <h3>Capability</h3>
-                <p>～説明～</p>
+                <h1>コンテナのプロセス</h1>
+                <p>Linuxにおける一般的なコンテナは，幾つかの機能を組み合わせることにより実現されている．その中でも代表的なLinuxのカーネル機能について説明する．
+                </p>
+                <h2>Namespace</h2>
+                <p>Namespaceは，Linuxカーネルのリソースを各プロセスごとに分離するための機構である．この機能により，プロセスは他のプロセスと隔離されるため，互いに干渉せずに環境構築が可能となる．
+                <h4>Namespaceの種類</h4>
+                <ul>
+                    <li>リンゴ
+                    <li>イチゴ
+                    <li>みかん
+                </ul>
+                <h4>画像</h4>
+                Namespace AとBがあり，その中では独立したファイル構造やプロセス空間を持つことができる．プロセス空間については，ホストOS上で動作しているPIDとコンテナ上で動作しているPIDをマッピングしているテーブルがあり，ホストOS上ではPIDが2だが，コンテナ上ではPIDが1である，ということになる．</p><br>
+
+                <h2>cgroup</h2>
+                <p>cgroupは，プロセスをグループ化し，Linuxカーネルのリソースの使用を制限する役割を担う．上記のNamespaceはホスト名やPIDなどのリソースを制御するのに対し，cgroupはCPUやメモリといった物理的なリソースを制御する．cgroupを使うことで，特定のプロセスがホストOSの持つ有限なリソースを使い尽くして，ホストOSや他のプロセスに影響を与えないようにコントロールすることができる．</p><br>
+
+                <h2>Capability</h2>
+                <p>Capabilityとは，root権限を細分化し，プロセスに特権全てを付与するのではなく，必要最低限の権限を与える機能である，もし，root権限がそのまま付与されたプロセスに脆弱性があった場合に，不正な操作により，システム全体を第三者に乗っ取られる危険性がある．その為，Capabilityを用いてプロセスに与える権限を最小限に制御することで，プロセスに脆弱性があったとしても，ホストOSや他のプロセスへの影響範囲を狭めることができる．</p>
+                
+                <br><br><br><br><br><br>
             </div>
         </div>
     </body>

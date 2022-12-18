@@ -33,10 +33,9 @@
                 </li>
                 <li class="has-child-menu"><a href="../docker/what_is_docker.html">Docker</a>
                     <ul>
-                        <li class="contents3-1"><a href="../docker/docker_command.html">よく使うDockerコマンド</a></li>
-                        <li class="contents3-2"><a href="../docker/docker_files.html">イメージとインスタンス，Dockerfile</a></li>
-                        <li class="contents3-3"><a href="../docker/docker_network.html">Dockerのネットワーク</a></li>
-                        <li class="contents3-4"><a href="../docker/dockercompose.html">複数コンテナ管理（Docker Compose）</a></li>
+                        <li class="contents3-1"><a href="../docker/docker_files.html">Dockerの構成要素</a></li>
+                        <li class="contents3-2"><a href="../docker/docker_network.html">Dockerのネットワーク</a></li>
+                        <li class="contents3-3"><a href="../docker/dockercompose.html">複数コンテナ管理（Docker Compose）</a></li>
                     </ul>
                 </li>
                 <li class="contents3"><a href="../conclusion.html">おわりに</a></li>
@@ -63,7 +62,12 @@
                     <li>User Namespace:　UID，GID，Capabilityを分離する．
                     <li>IPC Namespace:　プロセス間通信 (Inter-Process Communication) の名前空間．これが共有されているとプロセス間での通信が行える．
                 </ul>
-                <img src="../imgs/container4.PNG" width="80%" style="display: block; margin: auto;"><br>
+
+                <figure>
+                    <img src="../imgs/container4.PNG" width="85%" style="display: block; margin: auto;">
+                    <figcaption>出典：<cite><a href="https://tech-lab.sios.jp/archives/18811">【連載】世界一わかりみが深いコンテナ & Docker入門 〜その1:コンテナってなに？〜</a></cite></figcaption>
+                </figure>
+                <br>
                 Namespace AとBがあり，その中では独立したファイル構造やプロセス空間を持つことができる．Namespaceが異なれば，同じファイル名やディレクトリが1つのOS上に作れる．プロセス空間については，ホストOS上で動作しているPIDとコンテナ上で動作しているPIDをマッピングしているテーブルがあり，ホストOS上ではPIDが2だが，コンテナ上ではPIDが1である，ということになる．</p><br>
 
                 <h2>cgroup</h2>

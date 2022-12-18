@@ -33,10 +33,9 @@
                 </li>
                 <li class="has-child-menu"><a href="../docker/what_is_docker.html">Docker</a>
                     <ul>
-                        <li class="contents3-1"><a href="../docker/docker_command.html">よく使うDockerコマンド</a></li>
-                        <li class="contents3-2"><a href="../docker/docker_files.html">イメージとインスタンス，Dockerfile</a></li>
-                        <li class="contents3-3"><a href="../docker/docker_network.html">Dockerのネットワーク</a></li>
-                        <li class="contents3-4"><a href="../docker/dockercompose.html">複数コンテナ管理（Docker Compose）</a></li>
+                        <li class="contents3-1"><a href="../docker/docker_files.html">Dockerの構成要素</a></li>
+                        <li class="contents3-2"><a href="../docker/docker_network.html">Dockerのネットワーク</a></li>
+                        <li class="contents3-3"><a href="../docker/dockercompose.html">複数コンテナ管理（Docker Compose）</a></li>
                     </ul>
                 </li>
                 <li class="contents3"><a href="../conclusion.html">おわりに</a></li>
@@ -53,7 +52,7 @@
                 <h1>仮想マシン（VM）</h1>
                 <p>仮想マシンとは，専用の仮想化ソフトウェアによって物理マシン上に作成され，仮想コンピュータシステムとして機能する仮想環境のこと．VMを使うことで，複数の異なるOSを1台のコンピュータ上で同時に実行可能となる．これにより，計算機リソースを柔軟に管理することが可能である．<br>
                 VMは，物理マシンと同様に独自のOSやストレージ，ネットワーク等を備えており，同ホスト上で実行されている他のVMから完全に分離されている．</p>
-                <h3>〇仮想マシンの種類</h3>
+                <h2>〇仮想マシンの種類</h2>
                 <dl>
                     <dt>ホストOS型
                     <dd>OS上に土台となる仮想化ソフトウェアをインストールし，そのソフトウェア上でVMを稼働させる方式．既存のマシンでVMが利用できるが，ホストOSと仮想化ソフトウェアを動作させるため，動作速度の低下や余分なリソースの消費がネックである．ホストOSの仮想化ソフトウェアの例としては，「VMware Fusion」「Oracle VM Virtualbox」などがある，
@@ -61,23 +60,65 @@
                     <dd>ハイパーバイザーと呼ばれる仮想化ソフトウェアを，サーバに直接インストールし，VMを稼働させる方式．ホストOSが不要な為，ハードウェアを直接制御することができ、VMの速度低下を最小限に抑えることが可能である．また，複数のVMを効率的に稼働させるための仕組みが搭載されている．ハイパーバイザーの例としては，「Linux KVM」「Microsoft Hyper-V」などがある．
                 </dl>
                 
-                
                 <br><h1>コンテナ型仮想化</h1>
                 <p>コンテナ型仮想化技術とは，コンテナエンジンと呼ばれるプロセスを通して，ホストOSのカーネルを共有することで計算機リソースを隔離し、仮想的な空間を作り出す技術のこと．VMがハードウェア全体を論理的に実行するのに対し、コンテナはOSは共通のカーネルを利用し、アプリケーションの実行環境だけを別々のものとして分離する．</p>
                 <p><b>注意：</b>カーネル上で動作しているコンテナは単一のカーネルを共有しているため、ホストOSと異なるOSのコンテナを作成することはできない．（Linuxの場合Linux, Windowsの場合はWindowsのコンテナを作成できる．）</p>
 
-                <br><h3>コンテナとVMの違い</h3>
-                <img src="../imgs/vm_container.PNG" width="90%" style="display: block; margin: auto;">
-
-                <p style="padding: 8px; border-left: 2px solid blue;"><b>〇実行環境</b></p>
+                <br><h2>コンテナとVMの違い</h2>
+                <p style="padding: 8px; border-left: 2px solid blue; font-size: 20px;"><b>〇実行環境</b></p>
                 VMとコンテナの違いの一つは，上記にあるように「OSカーネルを複数実行可能かどうか」である．VMでは，各VM毎に別々のOSカーネルを実行できる．一方で，コンテナは単一のOSカーネルしか実行することができず，単一のOSカーネル上で複数のコンテナが動作することになる．また，VMはカーネル空間とユーザー空間の両方を分離しているのに対し，コンテナはユーザー空間のみを分離している．（※）<br>
                 ※カーネル空間：カーネル領域，ユーザー空間：アプリケーションが動作している領域
 
-                <p style="padding: 8px; border-left: 2px solid blue;"><b>〇起動速度</b></p>
+                <p style="padding: 8px; border-left: 2px solid blue; font-size: 20px;"><b>〇起動速度</b></p>
                 もう一つの違いは，「起動速度」である，VMの場合，OSカーネルの起動からシステムに必要なプロセスの実行，アプリケーションの実行のように，システムの起動が完了するまでに様々な処理が必要である．一方で，コンテナの場合，OSカーネルとシステムプロセスの起動は完了しているため，アプリケーションプロセスの実行処理だけで済む．この特徴を活かし，システム開発からテスト，本番環境へのデプロイまでを高速に行うことができるため，コンテナはDevOpsと相性が良いとされている．
+                <br><img src="../imgs/vm_container.PNG" width="80%" style="display: block; margin: auto;"><br>
+
+                <h3 align="center">仮想マシン vs. コンテナ</h3>
+                <div style="margin:0px;padding:0px;" align="center">
+                    <table width="98%" style="border-collapse: collapse;border:1px solid #000000;background-color:#FFFFFF;color:#000000;text-align:left;">
+                        <tbody>
+                            <tr>
+                                <th style="border:1px solid #000000;background-color:#FFDEA4;color:#696969;text-align:center;">仮想マシン</th>
+                                <th style="border:1px solid #000000;background-color:#FFDEA4;color:#696969;text-align:center;">コンテナ</th>
+                            </tr>
+                            <tr>
+                                <td style="border:1px solid #000000;text-align:left;">
+                                    <ul>
+                                        <li>専用の仮想化ソフトウェアが介在
+                                        <li>オーバーヘッドが存在
+                                        <li>多数のソフトをインストールして使用
+                                        <li>仮想マシンはファイルで管理
+                                        <li>各VM毎に，異なるOSカーネルを実行可能
+                                        <li>カーネル空間とユーザー空間の両方を分離
+                                    </ul>
+                                </td>
+                                <td style="border:1px solid #000000;text-align:left;">
+                                    <ul>
+                                        <li>コンテナエンジンと呼ばれるプロセスが介在
+                                        <li>オーバーヘッドがほぼ0
+                                        <li>基本的に１ソフト／１コンテナ
+                                        <li>ホストOSからは，単なるプロセスとして見える
+                                        <li>単一のOSカーネルしか実行できない
+                                        <li>ユーザー空間のみを分離
+                                    </ul>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
                 
                 <br><br><br><br><br><br>
             </div>
+        </div>
+        <div class="footer">
+            <!--
+            <div class="next_button" style="text-align: left;">
+                <a href="#" >prev</a>
+            </div>
+            <div class="next_button" style="text-align: right;">
+                <a href="#">next</a>
+            </div>
+            -->
         </div>
     </body>
 </html>

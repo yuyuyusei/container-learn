@@ -4,3 +4,5 @@ package-lock.json
 .vscode
 source.txt
 images/
+docs/temp.css
+docs/temp.html

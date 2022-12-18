@@ -2,7 +2,7 @@
 <html lang="ja">
     <head>
         <meta charset="UTF-8">
-        <title>イメージとインスタンス，Dockerfile - コンテナ勉強会</title>
+        <title>Dockerの構成要素 - コンテナ勉強会</title>
 
         <!-- jQuery読み込み -->
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -17,7 +17,7 @@
     <body>
         <!-- ヘッダー -->
         <div class="header">
-            <h1 id="page-title">イメージとインスタンス，Dockerfileは</h1>
+            <h1 id="page-title">Dockerの構成要素</h1>
         </div>
 
         <!-- サイドメニュー領域 -->
@@ -33,10 +33,9 @@
                 </li>
                 <li class="has-child-menu"><a href="./what_is_docker.html">Docker</a>
                     <ul>
-                        <li class="contents3-1"><a href="./docker_command.html">よく使うDockerコマンド</a></li>
-                        <li class="contents3-2"><a href="./docker_files.html">イメージとインスタンス，Dockerfile</a></li>
-                        <li class="contents3-3"><a href="./docker_network.html">Dockerのネットワーク</a></li>
-                        <li class="contents3-4"><a href="./dockercompose.html">複数コンテナ管理（Docker Compose）</a></li>
+                        <li class="contents3-1"><a href="./docker_files.html">Dockerの構成要素</a></li>
+                        <li class="contents3-2"><a href="./docker_network.html">Dockerのネットワーク</a></li>
+                        <li class="contents3-3"><a href="./dockercompose.html">複数コンテナ管理（Docker Compose）</a></li>
                     </ul>
                 </li>
                 <li class="contents3"><a href="../conclusion.html">おわりに</a></li>
@@ -50,13 +49,95 @@
         <!-- メインコンテンツ -->
         <div class="main-contents">
             <div class="content">
-                <h2>イメージとインスタンス，Dockerfile</h2>
+                <h2>Dockerの構成要素</h2>
                 <h3>Docker Image</h3>
-                <p>～説明～</p>
-                <h3>Docker Instance</h3>
-                <p>～説明～</p>
+                <p>
+                Docker Imageとは，Dockerコンテナを起動するために，必要な設定ファイルをまとめたテンプレートのことである．”Imageはコンテナの元であり，Imageからコンテナを起動する”と理解すると良い．本来はソフトウェアをインストールする際に，様々な設定をカスタマイズをする必要があるが，Docker Imageを使うことで，その設定作業を省略することができる．また，DockerではこのImageを共有することで，様々なマシンで同じコンテナ(実行環境)を動作させることができる．</p>
+                <p style="padding: 2px; border-left: 3px solid gray; font-size: 15px;"><b>Tag</b></p>
+                <p>Docker Imageには，"Tag"という概念がある．これは"Imageのversion"のことである．Imageにタグを付与することで，Imageを区別することができ，Image毎にバージョンで管理したい場合は，タグにバージョン番号を指定する．Docker Imageを共有できるDocker Hubでは，Imageに様々なタグが存在し，どのversionを使用するかを選択できる．Docker Hubからダウンロードする際に，タグ名を何も指定しないと，自動的に"latest"タグが使用されるようになっている．</p>
+
+                <h4>Docker Imageの構造</h4>
+                イメージは以下のような特徴を持つ．
+                <ol>
+                    <li>layer構造になっている
+                    <li>一度作成されたimageは編集不可能（読み取り専用）
+                    <li>移動・共有が容易
+                </ol>
+
+                <p>Docker Imageは，レイヤー構造であり，複数のファイルやディレクトリなどがレイヤ（層）として積み重なり，1つに統合されたファイルシステムとして見えるようになっている．1つのインストールコマンドで，1つのレイヤーが積み重なっていくイメージである．Docker内部のストレージ・ドライバが，レイヤーを積み重ねる役割を担っている．<br>
+                また、土台となるベースレイヤーの上に，複数のレイヤーを積み重ねた編集不可能(Read Only)のイメージレイヤーが纏められており，コンテナ起動時に薄い読み書き可能なレイヤー(Thin R/W layer)が，自動的に割り当てられる．Imageに対する変更情報（ファイルの追加・削除など）は，すべてこのコンテナ用レイヤー上に記録され，このレイヤーをコミットすることで，新しいImageを生成することができる．</p>
+                
+                <img src="../imgs/dockerimage.PNG" width="80%" style="display: block; margin: auto;">
+                
+                <p>また，Docker Imageは移動や共有がし易い，という特徴がある．同一ホスト上で動く複数のコンテナがある場合は，イメージレイヤーを共有することができ，ホストのディスク容量を抑制することができる．Docker Imageは，各レイヤーをファイルやコードの差分のように扱えるため，ネットワークを通じて共有する際に，トラフィックや時間の節約も可能となる．</p>
                 <h3>Dockerfile</h3>
-                <p>～説明～</p>
+                Dockerfileは，Dockerで作成するコンテナイメージを管理するためのファイルである．言わば，Docker Imageの設計図である．Dockerfileに，イメージを作成する際の定義（どのようなファイルを追加するか，どんなコマンドを実行するか）を記述する．なお，Dockerfileに拡張子は不要である．
+                <h4>Dockerfileのメリット</h4>
+                <ul>
+                    <li>コンテナ構築の一連の手順を自動化できる</li>
+                    <li>Dockerコンテナの仕様をファイルで管理できる</li>
+                    <li>自分の好きなようにカスタマイズすることができる</li>
+                    <li>共有することで，複数人が簡単に同じ環境を構築できる</li>
+                    <li>コンテナイメージに、変更内容を履歴として保持することができる</li>
+                </ul>
+                Dockerfileを使用してコンテナイメージを作成することをビルドと呼び，作成されたコンテナイメージを起動することで，実際にコンテナが立ち上がる．
+                基本的にDocker Hubなどからpullしてきた，既存のイメージにファイルを追加したり，コマンドを実行したりすることで作成する．
+                例として，app.pyというPythonプログラムを実行するためのコンテナのDockerfileは，以下のようになる．（※<a href="https://qiita.com/satken2/items/8515900a5a7b9bb0d0c9">Linuxコンテナ・Docker入門(後編)</a>より引用）
+                <pre>
+                    <code>
+                        # Pythonの公式イメージから作成
+                        FROM python:3.7.6-stretch
+
+                        # pipでパッケージをインストール
+                        RUN pip install pip --upgrade && \
+                            pip install numpy scipy
+
+                        # aptでパッケージをインストール
+                        RUN apt-get update -y && \
+                            DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+                            sshpass
+
+                        # ディレクトリを作成
+                        WORKDIR /work
+
+                        # プログラムを配置
+                        COPY app.py /work
+
+                        # コンテナ起動時に最初に実行するコマンドを指定
+                        ENTRYPOINT python /work/app.py
+                    </code>
+                </pre>
+                
+                <h4>Dockerfileのコマンド例</h4>
+                <ul>
+                    <li>FROM：基となるコンテナイメージ</li>
+                    <li>LABEL：ラベル情報（メタデータ）</li>
+                    <li>COPY：ホストからコンテナへのファイルコピー</li>
+                    <li>RUN：docker build 時に実行するコマンド</li>
+                    <li>CMD：docker run 時に実行するコマンド（コンテナのデフォルトの実行コマンド）</li>
+                    <li>ENTRYPOINT：コンテナのエントリーポイントの定義</li>
+                    <li>EXPOSE：コンテナで利用するポート番号の定義</li>
+                </ul>
+                <p>これらの他にも様々なコマンドがある．詳細は<a href="https://docs.docker.jp/engine/reference/builder.html">Dockerfileの公式リファレンス</a>を参照する．</p>
+
+
+                <h2>Dockerの主要コマンド</h2>
+                <p>Dockerコンテナを操作する際に，よく使われるコマンドを紹介する．</p>
+                <ul>
+                    <li><code>$ docker run <イメージ名></code>：イメージの構築，コンテナの構築・起動</li>
+                    <li><code>$ docker start <コンテナID> or <コンテナ名></code>：コンテナの開始</li>
+                    <li><code>$ docker stop <コンテナID> or <コンテナ名></code>：コンテナの停止</li>
+                    <li><code>$ docker restart <コンテナID> or <コンテナ名></code>：コンテナの再起動</li>
+                    <li><code>$ docker exec <コンテナID> <コマンド></code>：起動中のコンテナでコマンド実行，コンテナ内にログイン</li>
+                    <li><code>$ docker ps -a</code>：コンテナの一覧の確認</li>
+                    <li><code>$ docker images</code>：イメージの確認</li>
+                    <li><code>$ docker rm <コンテナID> or <コンテナ名></code>：停止中のコンテナの削除</li>
+                    <li><code>$ docker rmi <イメージID></code>：イメージの削除</li>
+                    <li><code>$ docker build <Dockerfileパス></code>：Dockerfileからイメージを作成</li>
+                    <li><code>$ docker logs <コンテナID></code>：コンテナのログ出力</li>
+                    <li><code>$ docker image pull <イメージ名>:<tag></code>：Docker Hubからイメージをダウンロードする</li>
+                </ul>
+                <br><br><br><br><br>
             </div>
         </div>
     </body>

@@ -14,6 +14,14 @@ body {
     text-align: center;
 }
 
+.footer {
+    width: 50%;
+    margin: 0 auto;
+    background-color: wheat;
+    color: grey;
+    text-align: center;
+}
+
 /* メイン表示領域の設定 */
 .main-contents {
     width: 50%;
@@ -84,4 +92,43 @@ body {
 /* 最初に表示しない項目の設定 */
 .contents:not(.default-contents) {
     display: none;
+}
+
+.next_button a {
+    background: #eee;
+    text-decoration: none;
+    border-radius: 3px;
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    margin: 0 auto;
+    max-width: 100px;
+    padding: 10px 25px;
+    color: #313131;
+    transition: 0.3s ease-in-out;
+    font-weight: 500;
+}
+.next_button a:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    bottom: 0;
+    right: 2rem;
+    font-size: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: right 0.3s;
+    width: 6px;
+    height: 6px;
+    border-top: solid 2px currentColor;
+    border-right: solid 2px currentColor;
+    transform: translateY(-50%) rotate(45deg);
+}
+.next_button a:hover {
+    background: #6bb6ff;
+    color: #FFF;
+}
+.next_button a:hover:after {
+    right: 1.4rem;
 }

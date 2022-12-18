@@ -33,10 +33,9 @@
                 </li>
                 <li class="has-child-menu"><a href="./what_is_docker.html">Docker</a>
                     <ul>
-                        <li class="contents3-1"><a href="./docker_command.html">よく使うDockerコマンド</a></li>
-                        <li class="contents3-2"><a href="./docker_files.html">イメージとインスタンス，Dockerfile</a></li>
-                        <li class="contents3-3"><a href="./docker_network.html">Dockerのネットワーク</a></li>
-                        <li class="contents3-4"><a href="./dockercompose.html">複数コンテナ管理（Docker Compose）</a></li>
+                        <li class="contents3-1"><a href="./docker_files.html">Dockerの構成要素</a></li>
+                        <li class="contents3-2"><a href="./docker_network.html">Dockerのネットワーク</a></li>
+                        <li class="contents3-3"><a href="./dockercompose.html">複数コンテナ管理（Docker Compose）</a></li>
                     </ul>
                 </li>
                 <li class="contents3"><a href="../conclusion.html">おわりに</a></li>
@@ -51,7 +50,32 @@
         <div class="main-contents">
             <div class="content">
                 <h2>Dockerとは</h2>
-                <p>Dockerとは</p>
+                <p>Dockerとは，Docker社が提供しているOSSのコンテナエンジンである（※有償版有）．Dockerの設計思想は，「開発者が簡単にアプリケーションを動かす環境を作る」ことである．
+                現在，最も普及しているコンテナ型仮想化ソフトウェアであり，Amazon Web Service(AWS)のElastic Container Service(ECS)のようなコンテナプラットフォームや，開発者の開発環境など広く使われている．</p>
+                <p>Dockerは以下のような機能・特徴を持つ</p>
+                <ul>
+                    <li>可搬性・共有機能
+                        <br>Dockerは，コンテナをtarファイルにアーカイブして他の物理マシンに送信したり，コンテナレジストリを介して共有できる機能を持つ．これによって，コンテナの他の環境に流用することができる．
+                    <li>IaC（Infrastructure as Code）
+                        <br>
+                        IaCとは，コードやスクリプトを用いてインフラストラクチャの管理やプロビジョニングを行うことである．<br>
+                        Dockerでは，コンテナ内に作成するファイルやインストールするアプリケーションなどを，Dockerfileという形式で定義できる．これによって，IaC的にコンテナの内部を定義することができる．
+                    <li>バージョン管理
+                        <br>Dockerで作成したコンテナはバージョン番号を付与でき．Dockerで管理することができる．これによって，差分管理やロールバックなどが実現できる．
+                    <li>エコシステム
+                        <br>Dockerは，取り巻くエコシステムも多い．例として，以下のような関連ソフトウェアやサービスがある．
+                        <ul>
+                            <li>Docker Hub ： Dockerイメージの管理や共有を行うサイト（パブリックリポジトリ）</li>
+                            <li>Docker-Compose ： 複数のコンテナを連携して立ち上げるソフト</li>
+                            <li>Kubernetes ： コンテナの運用管理と自動化を行うために設計されたOSS</li>
+                        </ul>
+                </ul>
+                </p>
+                <!--
+                    <h3>Docker Architecture</h3>
+                -->
+                <br><br><br><br><br>
+            </div>
         </div>
     </body>
 </html>

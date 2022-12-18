@@ -33,10 +33,9 @@
                 </li>
                 <li class="has-child-menu"><a href="../docker/what_is_docker.html">Docker</a>
                     <ul>
-                        <li class="contents3-1"><a href="../docker/docker_command.html">よく使うDockerコマンド</a></li>
-                        <li class="contents3-2"><a href="../docker/docker_files.html">イメージとインスタンス，Dockerfile</a></li>
-                        <li class="contents3-3"><a href="../docker/docker_network.html">Dockerのネットワーク</a></li>
-                        <li class="contents3-4"><a href="../docker/dockercompose.html">複数コンテナ管理（Docker Compose）</a></li>
+                        <li class="contents3-1"><a href="../docker/docker_files.html">Dockerの構成要素</a></li>
+                        <li class="contents3-2"><a href="../docker/docker_network.html">Dockerのネットワーク</a></li>
+                        <li class="contents3-3"><a href="../docker/dockercompose.html">複数コンテナ管理（Docker Compose）</a></li>
                     </ul>
                 </li>
                 <li class="contents3"><a href="../conclusion.html">おわりに</a></li>
@@ -71,8 +70,11 @@
                 <p>             
                     システムコンテナとは，アプリケーションコンテナと異なり，複数のプロセスとサービスが動作し，実際のLinux OSと同様に動作するコンテナである．OSを丸ごとコンテナ内で実行するようなイメージである．その為，他のOSと同じように，アプリケーションやライブラリ等をインストール，構成，実行することが出来る．なお，VMと同じように，コンテナ内で実行されているものはすべて，そのコンテナに割り当てられているリソースのみを表示する．システムコンテナの例としては，LXCやOpenVZがある．<br>
                 </p>
+                <figure>
+                    <img src="../imgs/container3.PNG" width="70%" style="display: block; margin: auto;">
+                    <figcaption>出典：<cite><a href="https://blog.risingstack.com/operating-system-containers-vs-application-containers/">Operating System Containers vs. Application Containers</a></cite></figcaption>
+                </figure>
                 
-                <img src="../imgs/container3.PNG" width="70%" style="display: block; margin: auto;">
                 従って，一般的に，アプリケーションをコンポーネントとしてパッケージ化して配布する場合は，アプリケーションコンテナが適切な手段として機能する．一方で，様々なライブラリや言語，DBなどをインストールできるOSが必要な場合は，システムコンテナの方が適している．
 
                 <br><br><br><br><br><br>

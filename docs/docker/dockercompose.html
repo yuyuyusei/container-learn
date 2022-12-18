@@ -33,10 +33,9 @@
                 </li>
                 <li class="has-child-menu"><a href="./what_is_docker.html">Docker</a>
                     <ul>
-                        <li class="contents3-1"><a href="./docker_command.html">よく使うDockerコマンド</a></li>
-                        <li class="contents3-2"><a href="./docker_files.html">イメージとインスタンス，Dockerfile</a></li>
-                        <li class="contents3-3"><a href="./docker_network.html">Dockerのネットワーク</a></li>
-                        <li class="contents3-4"><a href="./dockercompose.html">複数コンテナ管理（Docker Compose）</a></li>
+                        <li class="contents3-1"><a href="./docker_files.html">Dockerの構成要素</a></li>
+                        <li class="contents3-2"><a href="./docker_network.html">Dockerのネットワーク</a></li>
+                        <li class="contents3-3"><a href="./dockercompose.html">複数コンテナ管理（Docker Compose）</a></li>
                     </ul>
                 </li>
                 <li class="contents3"><a href="../conclusion.html">おわりに</a></li>
@@ -51,8 +50,42 @@
         <div class="main-contents">
             <div class="content">
                 <h2>複数コンテナ管理（Docker Compose）</h2>
-                <p>Docker Composeとは～</p>
-                <h4>利点</h4>
+                <p>Docker Composeは，複数のコンテナを1つのYAML形式のファイルで定義して管理するツールである．一般的に，1つのコンテナにつき，1つのプロセスが内包されることが推奨されているが，扱うコンテナが増えるほど，それらを管理・運用する負担も増加していく．このようなケースにおいて，Docker Composeを用いることで，このような煩わしさを解消することができる．また，Docker composeで使用するコマンドは，Dockerのコマンドと似ているため，簡単に覚えられることも特徴の1つである．</p>
+                <p>Docker Composeを利用しない場合は，各コンテナ一つ一つを，それぞれ細かく設定しなければならないが，Docker Composeを利用すれば，docker-compose.ymlを定義し、<code>$ docker-compose up</code>1つで複数コンテナを起動することができる．例えば，Webアプリケーションを立ち上げる場合，フロント・バックエンド，Webサーバ，DBなどの定義を，1つのdocker-compose.ymlファイルに記述することで，必要なコンテナ群をまとめて起動・設定でき，1つのサービスとして管理することができる．</p>
+
+                <br><p>手順は以下の通りである．</p>
+                <ol>
+                    <li>Dockerfileの作成　あるいは　Docker Hubからイメージをダウンロード
+                    <li>docker-compose.ymlを定義
+                    <li>ymlファイルがあるディレクトリで，<code>$ docker-compose up</code>を実行する
+                </ol>
+                <br><h3>docker-compose.ymlの記述例</h3>
+                <pre>
+                    <code>
+                        version: '1'
+                        services:
+                            wordpress:
+                                image: wordpress
+                                ports:
+                                    - 8080:80
+                                environment:
+                                    WORDPRESS_DB_PASSWORD: xxxxx
+                            mysql:
+                                image: mongodb
+                                environment:
+                                    MYSQL_ROOT_PASSWORD: yyyyy
+                    </code>
+                </pre>
+                <br><h3>Docker Composeのコマンド例</h3>
+                <ul>
+                    <li><code>$ docker-compose up -d</code>：コンテナ生成・起動</li>
+                    <li><code>$ docker-compose ps</code>：コンテナの一覧</li>
+                    <li><code>$ docker-compose logs</code>：コンテナログ</li>
+                    <li><code>$ docker-compose stop</code>：コンテナの停止</li>
+                    <li><code>$ docker-compose rm</code>：コンテナの削除</li>
+                    <li><code>$ docker-compose down</code>：コンテナの停止・削除</li>
+                </ul>
+                <br><br><br><br><br>
             </div>
         </div>
     </body>

@@ -50,8 +50,8 @@
         <div class="main-contents">
             <div class="content">
                 <h2>Dockerとは</h2>
-                <p>Dockerとは，Docker社が提供しているOSSのコンテナエンジンである（※有償版有）．Dockerの設計思想は，「開発者が簡単にアプリケーションを動かす環境を作る」ことである．
-                現在，最も普及しているコンテナ型仮想化ソフトウェアであり，Amazon Web Service(AWS)のElastic Container Service(ECS)のようなコンテナプラットフォームや，開発者の開発環境など広く使われている．</p>
+                <p>Dockerとは，Docker社が提供しているOSSのコンテナエンジンである（※有償版有）．現在，最も普及しているコンテナ型仮想化ソフトウェアであり，Amazon Web Service(AWS)のElastic Container Service(ECS)のようなコンテナプラットフォームや，開発者の開発環境など広く使われている．コンテナはプラットフォームに依存しない為，DockerはWindowsとLinuxベースの両方のプラットフォームで実行できる．実際，Do仮想マシン内でDockerを実行することも可能である．Dockerの主な目的は，分散アーキテクチャでマイクロサービス・アプリケーションを実行できるようにすることである．
+                </p>
                 <p>Dockerは以下のような機能・特徴を持つ</p>
                 <ul>
                     <li>可搬性・共有機能
@@ -71,9 +71,26 @@
                         </ul>
                 </ul>
                 </p>
-                <!--
-                    <h3>Docker Architecture</h3>
-                -->
+                
+                <h3>Docker Architecture</h3>
+                <figure>
+                    <img src="../imgs/docker_archi.PNG" width="90%" style="display: block; margin: auto;">
+                    <figcaption>出典：<cite><a href="https://docs.docker.com/get-started/overview/">Docker overview</a></cite></figcaption>
+                </figure>
+                <p>Dockerは．クライアント・サーバ・アーキテクチャを採用している．DockerクライアントはDockerデーモンと通信し，Dockerコンテナの構築・実行・配布といった重要な作業を行う．基本的に，Dockerクライアントとデーモンは同じシステム上で動作させることができ，また、DockerクライアントをリモートのDockerデーモンに接続することも可能である．Dockerクライアントとデーモンは，REST APIを使用して，UNIXソケットまたはネットワークインタフェース上で通信する．また，DockerクライアントにはDocker Compose（※後述）がありコンテナ群からなるアプリケーションを操作することができる．</p>
+
+                <p><span class="under"><b>Dockerクライアント</b></span></p>
+                <p>Dockerのユーザは，クライアントを介してDockerと対話することができる．<code>$ docker run</code>のようなコマンドを実行すると，クライアントはそれをdockerデーモンに送信し，dockerデーモンがそれを実行する．Dockerコマンドは，Docker APIを使用する．なお，Dockerクライアントは、複数のデーモンと通信することができる．</p>
+
+                <p><span class="under"><b>Dockerホスト</b></span></p>
+                <p>Dockerホストは，アプリケーションの実行および実行するための環境を提供する．Dockerデーモン，イメージ，コンテナ，ネットワーク，ストレージから構成される．</p>
+
+                <p><span class="under"><b>Dockerデーモン</b></span></p>
+                <p>Dockerデーモン（dockerd）は，コンテナに関連するすべてのアクションを担当し，CLIまたはREST APIを介してコマンドを受け取る．また，他のデーモンと通信し，Dockerのサービスを管理することもできる．</p>
+
+                <p><span class="under"><b>Dockerレジストリ</b></span></p>
+                <p>Dockerレジストリは，イメージを保存したり，ダウンロードしたりできる場所を提供するサービスである．パブリックなリポジトリとしては，Docker Hubが提供されており，DockerはデフォルトでDocker Hub上のイメージを検索するように設定されている．また，自分専用のプライベートなレジストリを運用することもできる．<code>$ docker pull</code>や<code>$ docker run</code>を実行すると，設定したレジストリから必要なイメージが引き出される．また，<code>$ docker push</code>を実行すると，設定したレジストリにイメージがプッシュされる．</p>
+                
                 <br><br><br><br><br>
             </div>
         </div>

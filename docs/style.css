@@ -22,6 +22,10 @@ body {
     text-align: center;
 }
 
+.under {
+    background: linear-gradient(transparent 80%, #ff99ab 80%);
+}
+
 /* メイン表示領域の設定 */
 .main-contents {
     width: 50%;

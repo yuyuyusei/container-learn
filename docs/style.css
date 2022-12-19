@@ -17,8 +17,6 @@ body {
 .footer {
     width: 50%;
     margin: 0 auto;
-    background-color: wheat;
-    color: grey;
     text-align: center;
 }
 
@@ -98,41 +96,57 @@ body {
     display: none;
 }
 
-.next_button a {
+.buttons{
+    display: flex;
+    justify-content: center;
+}
+
+.button_prev, .button_next a {
     background: #eee;
-    text-decoration: none;
-    border-radius: 3px;
     position: relative;
     display: flex;
     justify-content: space-around;
+    align-items: center;
     margin: 0 auto;
-    max-width: 100px;
-    padding: 10px 25px;
+    max-width: 240px;
+    padding: 13px 30px;
     color: #313131;
     transition: 0.3s ease-in-out;
     font-weight: 500;
+    z-index:0;
+    border-radius: 3px;
+    border-radius: 50px;
 }
-.next_button a:after {
+.button_prev a:before {
     content: "";
     position: absolute;
-    top: 50%;
+    right: 0;
+    top: 0;
     bottom: 0;
-    right: 2rem;
-    font-size: 90%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: right 0.3s;
-    width: 6px;
-    height: 6px;
-    border-top: solid 2px currentColor;
-    border-right: solid 2px currentColor;
-    transform: translateY(-50%) rotate(45deg);
+    width: 0;
+    display: block;
+    background: orange;
+    transition: .3s;
 }
-.next_button a:hover {
-    background: #6bb6ff;
-    color: #FFF;
+.button_next a:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 0;
+    display: block;
+    background: orange;
+    transition: .3s;
 }
-.next_button a:hover:after {
-    right: 1.4rem;
+
+.button_prev a:hover, .button_next a:hover {
+    color: white;
 }
+.button_prev a:hover:before, .button_next a:hover::before {
+    width: 100%;
+    z-index: -1;
+    border-radius: 3px;
+    border-radius: 50px;
+}
+

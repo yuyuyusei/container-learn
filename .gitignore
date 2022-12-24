@@ -3,6 +3,8 @@ package-lock.json
 !.gitkeep
 .vscode
 source.txt
+添削.md
+添削.pdf
 images/
 docs/temp.css
 docs/temp.html

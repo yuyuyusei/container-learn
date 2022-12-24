@@ -67,41 +67,46 @@
                 <br><h2>コンテナとVMの違い</h2>
                 <p style="padding: 8px; border-left: 2px solid blue; font-size: 20px;"><b>〇実行環境</b></p>
                 VMとコンテナの違いの一つは，上記にあるように「OSカーネルを複数実行可能かどうか」である．VMでは，各VM毎に別々のOSカーネルを実行できる．一方で，コンテナは単一のOSカーネルしか実行することができず，単一のOSカーネル上で複数のコンテナが動作することになる．また，VMはカーネル空間とユーザー空間の両方を分離しているのに対し，コンテナはユーザー空間のみを分離している．（※）<br>
-                ※カーネル空間：カーネル領域<tr>ユーザー空間：アプリケーションが動作している領域
+                ※カーネル空間：カーネル（OSの基本機能の役割を担うソフトウェア）が使用するメモリ領域<br>
+                　ユーザー空間：アプリケーションが使用するメモリ領域
 
                 <p style="padding: 8px; border-left: 2px solid blue; font-size: 20px;"><b>〇起動速度</b></p>
                 もう一つの違いは，「起動速度」である，VMの場合，OSカーネルの起動からシステムに必要なプロセスの実行，アプリケーションの実行のように，システムの起動が完了するまでに様々な処理が必要である．一方で，コンテナの場合，OSカーネルとシステムプロセスの起動は完了しているため，アプリケーションプロセスの実行処理だけで済む．この特徴を活かし，システム開発からテスト，本番環境へのデプロイまでを高速に行うことができるため，コンテナはDevOpsと相性が良いとされている．
-                <br><img src="../imgs/vm_container.PNG" width="80%" style="display: block; margin: auto;"><br>
+                <br><br><img src="../imgs/vm_container.PNG" width="100%" style="display: block; margin: auto;"><br>
 
                 <h3 align="center">仮想マシン vs. コンテナ</h3>
                 <div style="margin:0px;padding:0px;" align="center">
-                    <table width="98%" style="border-collapse: collapse;border:1px solid #000000;background-color:#FFFFFF;color:#000000;text-align:left;">
+                    <table width="100%" style="border-collapse: collapse;border:1px solid #000000;background-color:#FFFFFF;color:#000000;text-align:left;">
                         <tbody>
                             <tr>
+                                <th style="border:1px solid #000000;background-color:#FFDEA4;color:#FFFFFF;text-align:center;">&nbsp;</th>
                                 <th style="border:1px solid #000000;background-color:#FFDEA4;color:#696969;text-align:center;">仮想マシン</th>
                                 <th style="border:1px solid #000000;background-color:#FFDEA4;color:#696969;text-align:center;">コンテナ</th>
                             </tr>
                             <tr>
-                                <td style="border:1px solid #000000;text-align:left;">
-                                    <ul>
-                                        <li>専用の仮想化ソフトウェアが介在
-                                        <li>オーバーヘッドが存在
-                                        <li>多数のソフトをインストールして使用
-                                        <li>仮想マシンはファイルで管理
-                                        <li>各VM毎に，異なるOSカーネルを実行可能
-                                        <li>カーネル空間とユーザー空間の両方を分離
-                                    </ul>
-                                </td>
-                                <td style="border:1px solid #000000;text-align:left;">
-                                    <ul>
-                                        <li>コンテナエンジンと呼ばれるプロセスが介在
-                                        <li>オーバーヘッドがほぼ0
-                                        <li>基本的に１ソフト／１コンテナ
-                                        <li>ホストOSからは，単なるプロセスとして見える
-                                        <li>単一のOSカーネルしか実行できない
-                                        <li>ユーザー空間のみを分離
-                                    </ul>
-                                </td>
+                                <td style="border:1px solid #000000;text-align:left;">構成</td>
+                                <td style="border:1px solid #000000;text-align:left;">専用の仮想化ソフトウェアが介在</td>
+                                <td style="border:1px solid #000000;text-align:left;">コンテナエンジンと呼ばれるプロセスが介在</td>
+                            </tr>
+                            <tr>
+                                <td style="border:1px solid #000000;text-align:left;">オーバーヘッド</td>
+                                <td style="border:1px solid #000000;text-align:left;">オーバーヘッドが存在する</td>
+                                <td style="border:1px solid #000000;text-align:left;">オーバーヘッドはほぼ0</td>
+                            </tr>
+                            <tr>
+                                <td style="border:1px solid #000000;text-align:left;">柔軟性</td>
+                                <td style="border:1px solid #000000;text-align:left;">多数のソフトをインストールして使用可能<br>多機能で柔軟性がある</td>
+                                <td style="border:1px solid #000000;text-align:left;">基本的に1コンテナにつき，1ソフト<br>単機能向け</td>
+                            </tr>
+                            <tr>
+                                <td style="border:1px solid #000000;text-align:left;">OS</td>
+                                <td style="border:1px solid #000000;text-align:left;">各VM毎に独自のOSカーネルを実行可能</td>
+                                <td style="border:1px solid #000000;text-align:left;">すべてのコンテナはホストの同じOSカーネルを共有する</td>
+                            </tr>
+                            <tr>
+                                <td style="border:1px solid #000000;text-align:left;">メモリ領域の分離</td>
+                                <td style="border:1px solid #000000;text-align:left;">カーネル空間とユーザー空間の両方を分離</td>
+                                <td style="border:1px solid #000000;text-align:left;">ユーザー空間のみを分離</td>
                             </tr>
                         </tbody>
                     </table>

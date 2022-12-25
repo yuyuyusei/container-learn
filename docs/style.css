@@ -24,6 +24,26 @@ body {
     background: linear-gradient(transparent 80%, #ff99ab 80%);
 }
 
+.pre_code {
+    display: block;
+    margin-right: auto;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px; /* 角丸 */
+    background: #25292f; /* 背景色 */
+    color: #fff; /* 文字色 */
+    white-space: pre-wrap; /* はみ出たときに折り返す */
+}
+
+code {
+    display: inline-block;
+    padding: 0.1em 0.25em; /* 文字周りの余白 */
+    color: #444; /* 文字色 */
+    background-color: #e7edf3; /* 背景色 */
+    border-radius: 3px; /* 角丸 */
+    border: solid 1px #d6dde4; /* 枠線 */
+}
+
 /* メイン表示領域の設定 */
 .main-contents {
     width: 50%;

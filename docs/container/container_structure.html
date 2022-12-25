@@ -35,7 +35,7 @@
                     <ul>
                         <li class="contents3-1"><a href="../docker/docker_files.html">Dockerの構成要素</a></li>
                         <li class="contents3-2"><a href="../docker/docker_network.html">Dockerのネットワーク</a></li>
-                        <li class="contents3-3"><a href="../docker/dockercompose.html">複数コンテナ管理（Docker Compose）</a></li>
+                        <li class="contents3-3"><a href="../docker/dockercompose.html">複数コンテナ管理</a></li>
                     </ul>
                 </li>
                 <li class="contents3"><a href="../conclusion.html">おわりに</a></li>
@@ -51,7 +51,7 @@
             <div class="content">
                 <h1>コンテナの構成</h1>
                 <p>コンテナは単一のホストOS上で動作するコンテナエンジン上にプロセスとして存在し，そのエンジンが管理するリソースの範囲内で，複数のコンテナを同時に動作させることができる．<br>
-                コンテナ内部には、”アプリケーション（≒プロセス）”と、その実行に必要な”ミドルウェア”，”OSの一部（ライブラリ，設定，ファイルシステムなど）”がパッケージ化されている．</p>
+                コンテナ内部には，”アプリケーション（≒プロセス）”と，その実行に必要な”ミドルウェア”，”OSの一部（ライブラリ，設定，ファイルシステムなど）”がパッケージ化されている．</p>
                 <img src="../imgs/container1.PNG" width="65%" style="display: block; margin: auto;">
                 
                 <p>様々なLinuxOSのコンテナイメージが公開されており，これらを用いることでアプリケーションの実行環境を構築できる．しかし，コンテナはOS自体を動作させているわけではなく，それに似た動作環境を再現している．その理解の為に，コンテナにおけるアプリケーションの動作を解説する．<br>

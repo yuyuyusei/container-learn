@@ -51,7 +51,7 @@
             <div class="content">
                 <h2>Docker Compose</h2>
                 <p>Docker Composeは，複数のコンテナを1つのYAML形式のファイルで定義して管理するツールである．一般的に，1つのコンテナにつき，1つのプロセスが内包されることが推奨されているが，扱うコンテナが増えるほど，それらを管理・運用する負担も増加していく．このようなケースにおいて，Docker Composeを用いることで，このような煩わしさを解消することができる．また，Docker composeで使用するコマンドは，Dockerのコマンドと似ているため，簡単に覚えられることも特徴の1つである．</p>
-                <p>Docker Composeを利用しない場合は，各コンテナ一つ一つを，それぞれ細かく設定しなければならないが，Docker Composeを利用すれば，docker-compose.ymlを定義し、<code>$ docker-compose up</code>1つで複数コンテナを起動することができる．例えば，Webアプリケーションを立ち上げる場合，フロント・バックエンド，Webサーバ，DBなどの定義を，1つのdocker-compose.ymlファイルに記述することで，必要なコンテナ群をまとめて起動・設定でき，1つのサービスとして管理することができる．</p>
+                <p>Docker Composeを利用しない場合は，各コンテナ一つ一つを，それぞれ細かく設定しなければならないが，Docker Composeを利用すれば，docker-compose.ymlを定義し，<code>$ docker-compose up</code>1つで複数コンテナを起動することができる．例えば，Webアプリケーションを立ち上げる場合，フロント・バックエンド，Webサーバ，DBなどの定義を，1つのdocker-compose.ymlファイルに記述することで，必要なコンテナ群をまとめて起動・設定でき，1つのサービスとして管理することができる．</p>
 
                 <br><p>手順は以下の通りである．</p>
                 <ol>
@@ -62,7 +62,7 @@
                 <br><h3>docker-compose.ymlの記述例</h3>
                 以下のdocker-compose.ymlでは，wordpressコンテナとmongodbを使用するmysqlコンテナを作成している．
                 <pre>
-                    <code class="pre_code" margin-right: auto; style="font-size: 20px;">
+                    <code class="pre_code" margin-right: auto; style="font-size: 17px;">
                         version: '1'
                         services:
                             wordpress:
@@ -88,28 +88,34 @@
                 </ul>
 
                 <h2>Kubernetes</h2>
-                <p>Kubernetes(k8s・kubeと略される)とは，Googleが公開したオープンソースのコンテナオーケストレーションシステムである．噛み砕いて言うと，「多くのコンテナを置いて連携させるようなアプリケーションを，デプロイ・スケーリング・管理するためのソフトウェアである．つまり，DockerやDocker Composeによって立ち上げられたコンテナ群を管理してくれるのが，コンテナオーケストレーションシステム（≒Kubernetes）である．</p>
+                <p>Kubernetes(k8s・kubeと略される)とは，Googleが公開したオープンソースのコンテナオーケストレーションシステムである．噛み砕いて言うと，「多くのコンテナを置いて連携させるようなアプリケーションを，デプロイ・スケーリング・管理するためのソフトウェアである．</p>
                 <h4>Kubernetesの全体構造図</h4>
-                <!-- <img src="../imgs/docker_network3.PNG" width="85%" style="display: block; margin: auto;"> -->
+                <img src="../imgs/kubernetes1.PNG" width="85%" style="display: block; margin: auto;">
                 <p>Kubernetesは，上記のような構成になっている．Kubernetesが管理する基本単位は”Pod”と呼ばれるコンテナの集まりである．また，複数のPodがまとめたものを”Node”と呼び，さらにNodeをまとめたものを”Cluster”と呼ぶ．Pod，Node，Clusterを管理するものを”Master”，Masterへの指示や設定を”Manifest”と呼ぶ．<br>
                 Kubernetesを用いることで，複数のコンテナを自動的に管理することができる．例えば，Kubernetesでは，コンテナを起動する際に，イメージと台数を指定するだけで良く，どのサーバにどのようにコンテナを配置するのか，といった作業は，Kubernetesが自動で行ってくれる．また，コンテナに必要な計算機リソースが不足した場合は，既存のサービスに影響を与えることなく，自動で拡張を行う．</p>
 
-                <p>Kubernetesの機能説明の例として，Docker上でWebシステムを構築する，という場面を考える．後々の機能改修やスケーリングを考慮し，Webサーバ，Webアプリケーション，DBサーバをそれぞれ１つのコンテナ毎で稼働するとした場合に，それらをDocker Composeのみで構築した場合に，以下の図のようになる．</p>
-                <!-- <img src="../imgs/docker_network3.PNG" width="85%" style="display: block; margin: auto;"> -->
+                <p>Kubernetesの機能説明の例として，まずは，Docker Composeのみでシステムを構築した場合の図を示す．</p>
+                <figure>
+                    <img src="../imgs/kubernetes2.PNG" width="100%" style="display: block; margin: auto;">
+                    <figcaption>出典：<cite><a href="https://qiita.com/Kta-M/items/ce475c0063d3d3f36d5d">数時間で完全理解！わりとゴツいKubernetesハンズオン！！</a></cite></figcaption>
+                </figure>
                 <p>しかし，この場合，以下のような問題が発生してしまう．</p>
                 <ul>
-                    <li>サーバ毎にyamlファイルを作る必要がある...</li>
-                    <li>複数のDocker Composeをどのように管理するのか?</li>
+                    <li>コンテナを更新する際，コンテナ間の依存関係やデプロイ順序を考慮しなければならない...</li>
+                    <li>どのコンテナがどのサーバにあるのか管理しなければならない...</li>
                     <li>ロードバランサーの設定も手動でしなければならない...</li>
                     <li>アクセス状況に応じたスケーリングも手動でやらなければならない...</li>
                     <li>コンテナが死んだ場合，どのように気付くのか？その回復方法は？</li>
                     <li>どのコンテナがどのサーバにあるのか管理しなければならない...</li>
                     <li>logファイルはどのように管理するのか？</li>
                     <li>etc...</li>
-                </ul>
-                <p>これらの問題を解決してくれるサービスがKubernetesである．Kubernetesは予め設定された「仕様書（マニフェストファイル）」に基づき，Docker Composeの更にもう１段階上から見て，様々なことを行ってくれる．</p>
-                
-
+                </ul>                
+                <p>これらの問題を解決してくれるシステムがKubernetesであり，下図がKubernetesの機能を表したイメージ図である．</p>
+                <figure>
+                    <img src="../imgs/kubernetes3.PNG" width="100%" style="display: block; margin: auto;">
+                    <figcaption>出典：<cite><a href="https://qiita.com/Kta-M/items/ce475c0063d3d3f36d5d">数時間で完全理解！わりとゴツいKubernetesハンズオン！！</a></cite></figcaption>
+                </figure>
+                <br>
                 <p>Kubernetesは様々な機能を提供する．以下に代表的な機能を幾つか列挙する．</p>
                 <ul>
                     <li>サービスディスカバリー，負荷分散：<br>

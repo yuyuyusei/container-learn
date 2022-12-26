@@ -55,13 +55,13 @@
                 <p>Dockerは以下のような機能・特徴を持つ</p>
                 <ul>
                     <li>可搬性・共有機能
-                        <br>Dockerは，コンテナをtarファイルにアーカイブして他の物理マシンに送信したり，コンテナレジストリを介して共有できる機能を持つ．これによって，コンテナを他の環境に流用することができる．
+                        <br>Dockerは，コンテナをtarファイルにアーカイブして他の物理マシンに送信したり，コンテナレジストリを介して共有できる機能を持つ．これによって，コンテナを他の環境に流用できる．
                     <li>IaC（Infrastructure as Code）
                         <br>
                         IaCとは，コードやスクリプトを用いてインフラストラクチャの管理やプロビジョニングを行うことである．<br>
-                        Dockerでは，コンテナ内に作成するファイルやインストールするアプリケーションなどを，Dockerfileという形式で定義できる．これによって，IaC的にコンテナの内部を定義することができる．
+                        Dockerでは，コンテナ内に作成するファイルやインストールするアプリケーションなどを，Dockerfileという形式で定義できる．これによって，IaC的にコンテナの内部を定義できる．
                     <li>バージョン管理
-                        <br>Dockerで作成したコンテナはバージョン番号を付与でき．Dockerで管理することができる．これによって，差分管理やロールバックなどが実現できる．
+                        <br>Dockerで作成したコンテナはバージョン番号を付与でき．Dockerで管理できる．これによって，差分管理やロールバックなどが実現できる．
                     <li>エコシステム
                         <br>Dockerは，取り巻くエコシステムも多い．例として，以下のような関連ソフトウェアやサービスがある．
                         <ul>
@@ -77,19 +77,19 @@
                     <img src="../imgs/docker_archi.PNG" width="90%" style="display: block; margin: auto;">
                     <figcaption>出典：<cite><a href="https://docs.docker.com/get-started/overview/">Docker overview</a></cite></figcaption>
                 </figure>
-                <p>Dockerは．クライアント・サーバ・アーキテクチャを採用している．DockerクライアントはDockerデーモンと通信し，Dockerコンテナの構築・実行・配布といった重要な作業を行う．基本的に，Dockerクライアントとデーモンは同じシステム上で動作させることができ，また，DockerクライアントをリモートのDockerデーモンに接続することも可能である．Dockerクライアントとデーモンは，REST APIを使用して，UNIXソケットまたはネットワークインタフェース上で通信する．また，DockerクライアントにはDocker Compose（※後述）がありコンテナ群からなるアプリケーションを操作することができる．</p>
+                <p>Dockerは．クライアント・サーバ・アーキテクチャを採用している．DockerクライアントはDockerデーモンと通信し，Dockerコンテナの構築・実行・配布といった重要な作業を行う．基本的に，Dockerクライアントとデーモンは同じシステム上で動作させることができ，また，DockerクライアントをリモートのDockerデーモンに接続することも可能である．Dockerクライアントとデーモンは，REST APIを使用して，UNIXソケットまたはネットワークインタフェース上で通信する．また，DockerクライアントにはDocker Compose（※後述）がありコンテナ群からなるアプリケーションを操作できる．</p>
 
                 <p><span class="under"><b>Dockerクライアント</b></span></p>
-                <p>Dockerのユーザは，クライアントを介してDockerと対話することができる．<code>$ docker run</code>のようなコマンドを実行すると，クライアントはそれをdockerデーモンに送信し，dockerデーモンがそれを実行する．Dockerコマンドは，Docker APIを使用する．なお，Dockerクライアントは，複数のデーモンと通信することができる．</p>
+                <p>Dockerのユーザは，クライアントを介してDockerと対話することができる．<code>$ docker run</code>のようなコマンドを実行すると，クライアントはそれをdockerデーモンに送信し，dockerデーモンがそれを実行する．Dockerコマンドは，Docker APIを使用する．なお，Dockerクライアントは，複数のデーモンと通信できる．</p>
 
                 <p><span class="under"><b>Dockerホスト</b></span></p>
                 <p>Dockerホストは，アプリケーションの実行および実行するための環境を提供する．Dockerデーモン，イメージ，コンテナ，ネットワーク，ストレージから構成される．</p>
 
                 <p><span class="under"><b>Dockerデーモン</b></span></p>
-                <p>Dockerデーモン（dockerd）は，コンテナに関連するすべてのアクションを担当し，CLIまたはREST APIを介してコマンドを受け取る．また，他のデーモンと通信し，Dockerのサービスを管理することもできる．</p>
+                <p>Dockerデーモン（dockerd）は，コンテナに関連するすべてのアクションを担当し，CLIまたはREST APIを介してコマンドを受け取る．また，他のデーモンと通信し，Dockerのサービスを管理できる．</p>
 
                 <p><span class="under"><b>Dockerレジストリ</b></span></p>
-                <p>Dockerレジストリは，イメージを保存したり，ダウンロードしたりできる場所を提供するサービスである．パブリックなリポジトリとしては，Docker Hubが提供されており，DockerはデフォルトでDocker Hub上のイメージを検索するように設定されている．また，自分専用のプライベートなレジストリを運用することもできる．<code>$ docker pull</code>や<code>$ docker run</code>を実行すると，設定したレジストリから必要なイメージが引き出される．また，<code>$ docker push</code>を実行すると，設定したレジストリにイメージがプッシュされる．</p>
+                <p>Dockerレジストリは，イメージを保存したり，ダウンロードしたりできる場所を提供するサービスである．パブリックなリポジトリとしては，Docker Hubが提供されており，DockerはデフォルトでDocker Hub上のイメージを検索するように設定されている．また，自分専用のプライベートなレジストリを運用できる．<code>$ docker pull</code>や<code>$ docker run</code>を実行すると，設定したレジストリから必要なイメージが引き出される．また，<code>$ docker push</code>を実行すると，設定したレジストリにイメージがプッシュされる．</p>
                 
                 <br><br><br>
             </div>
